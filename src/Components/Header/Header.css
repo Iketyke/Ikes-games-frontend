@@ -1,0 +1,16 @@
+.App__Header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+.App__Header-icon_info {
+    background-image: var(--icon-info);
+    width:30px;
+    height: 30px;
+}
+
+.App__Header-icon_search {
+    background-image: var(--icon-search);
+    width:30px;
+    height: 30px;
+}
