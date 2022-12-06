@@ -1,0 +1,37 @@
+.App__Review_card {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    margin: 0 0.5em 0.5em 0.5em;
+}
+
+.App__Review_card-image {
+    padding: 0.25em;
+}
+
+.App__Review_card-image img {
+   width: 35vw;
+   height: 25vw;
+}
+
+.App__Review_card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 1rem, 1.5rem;
+    
+}
+
+.App__Review_card-content h2 {
+    font-size: 1.05em;
+    margin: 0.25em 0;
+}
+.App__Review_card-info {
+    display: flex;
+    justify-content: space-between;
+    
+}
+.App__Review_card-info p {
+    margin: 0.5em 1em;
+}
