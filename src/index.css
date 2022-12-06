@@ -6,4 +6,5 @@
 :root {
     --icon-info: url('./Assets/Info.svg');
     --icon-search: url('./Assets/Search.svg');
+    --icon-back: url('./Assets/Back.svg');
 }

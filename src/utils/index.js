@@ -13,3 +13,14 @@ export const getReviews = () => {
             console.log(err);
         })
 }
+
+export const getReview = (review_id) => {
+    return gamesAPI
+        .get('/reviews/' + review_id)
+        .then(res => {
+            return res.data;
+        }).catch(err => {
+            console.log(err);
+        })
+}
+
