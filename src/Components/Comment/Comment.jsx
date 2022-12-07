@@ -5,7 +5,7 @@ const Comment = ({author, created_at, body, votes}) => {
   return (
     <div className='App__Comment'>
       <div className='App__Comment-header'>
-        <p>{author}</p>
+        <p className='App__Comment-author'>{author}</p>
         <p>{created_at}</p>
       </div>
       <p>{body}</p>
