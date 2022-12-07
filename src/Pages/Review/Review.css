@@ -39,3 +39,11 @@
 .App__Review-by {
     margin-top: 0.5em;
 }
+
+.App__Review-comments {
+    margin:0.5em;
+}
+
+.App__Review-comments ul {
+    list-style: none;
+}

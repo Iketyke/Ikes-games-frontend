@@ -24,3 +24,13 @@ export const getReview = (review_id) => {
         })
 }
 
+export const getComments = (review_id) => {
+    return gamesAPI
+        .get(`/reviews/${review_id}/comments`)
+        .then(res => {
+            return res.data
+        }).catch(err => {
+            console.log(err);
+        })
+}
+

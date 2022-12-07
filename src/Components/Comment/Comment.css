@@ -1,0 +1,18 @@
+.App__Comment {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em 0;
+    list-style: none;
+    border-bottom: 1px solid gray;
+    padding: 0.5em 0;
+}
+
+.App__Comment-header {
+    display: flex;
+    margin-bottom: 0.5em;
+}
+
+.App__Comment-author {
+    margin-right: 0.5em;
+    font-weight: 700;
+}
