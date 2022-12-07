@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getReview } from "../../utils";
+import { getComments, getReview } from "../../utils";
 import "./Review.css";
-
+import { Comment } from "../../Components";
 const Review = () => {
+  const [comments, setComments] = useState([])
   const [currReview, setCurrReview] = useState({});
   const { review_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -11,13 +12,16 @@ const Review = () => {
   useEffect(() => {
     getReview(review_id).then((data) => {
       setCurrReview(data.review);
-      setIsLoading(false);
+      getComments(review_id).then(data => {
+        console.log(data)
+        setComments(data);
+        setIsLoading(false);
+      })
+      
     });
   }, [review_id]);
-  console.log(currReview);
   return (
     <>
-      {" "}
       {isLoading ? (
         <div className="App__Review-loading">
           <h1>Loading...</h1>
@@ -37,6 +41,14 @@ const Review = () => {
             </div>
             <p>{currReview.review_body}</p>
             <p className="App__Review-by">Review by {currReview.owner}</p>
+          </div>
+          <div className="App__Review-comments">
+            <h3>{comments.length ? (`Comments - ${comments.length}`) : ("No Comments - Be the First!")}</h3>
+            <ul>{comments.map(comment => (
+              <li key={comment.comment_id}>
+                <Comment author={comment.author} created_at={comment.created_at} body={comment.body} votes={comment.votes} />
+              </li>
+            ))}</ul>
           </div>
         </div>
       )}
