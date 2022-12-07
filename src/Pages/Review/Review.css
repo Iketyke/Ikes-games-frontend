@@ -1,6 +1,13 @@
 .App__Review {
  display: block;
 }
+.App__Review-loading {
+    display: flex;
+     height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
 
 .App__Review-image {
     padding: 3.5em 0.5em 0.5em 0.5em;
