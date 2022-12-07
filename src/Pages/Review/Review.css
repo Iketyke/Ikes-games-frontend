@@ -1,0 +1,41 @@
+.App__Review {
+ display: block;
+}
+.App__Review-loading {
+    display: flex;
+     height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.App__Review-image {
+    padding: 3.5em 0.5em 0.5em 0.5em;
+}
+
+.App__Review-image img {
+    width: 100%;
+}
+
+.App__Review-content {
+    padding: 0.5em;
+}
+.App__Review-content h2 {
+    margin-bottom: 0.5em;
+}
+.App__Review-info {
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: left;
+    margin-bottom: 1em;
+}
+
+.App__Review-info p:last-child {
+    border-left: 1px solid gray;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.App__Review-by {
+    margin-top: 0.5em;
+}

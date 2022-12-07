@@ -1,16 +1,46 @@
-.App__Header {
+.App__Header-home {
+    position: fixed;
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    width: 100%;
+    background-color: rgba(52, 96, 240, 0.753);
+    backdrop-filter: blur(10px);
 }
+.App__Header-home h1 {
+    margin: 0.5em;
+}
+.App__Header-review {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(52, 96, 240, 0.753);
+    backdrop-filter: blur(10px);
+}
+
+.App__Header-review h1 {
+    margin: 0.25em 0;
+    
+    
+}
+
 .App__Header-icon_info {
     background-image: var(--icon-info);
     width:30px;
     height: 30px;
+    margin: 1em;
 }
 
 .App__Header-icon_search {
     background-image: var(--icon-search);
     width:30px;
     height: 30px;
+    margin: 1em;
+}
+
+.App__Header-icon_back {
+    background-image: var(--icon-back);
+    width:30px;
+    height: 30px;
+    margin: 0.5em;
 }
