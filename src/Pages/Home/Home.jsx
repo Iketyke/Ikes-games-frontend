@@ -11,12 +11,11 @@ const Home = ({filter}) => {
   
 
   useEffect(() => {
-    getReviews().then((data) => {
+    getReviews(filter).then((data) => {
       if (data) {
-        const filtered = data.filter((review) => review.category === filter || filter === null)
-        setTopReview((prevReview) => (prevReview = filtered[0]));
-        filtered.shift();
-        setReviews(filtered);
+        setTopReview((prevReview) => (prevReview = data[0]));
+        data.shift();
+        setReviews(data);
         setIsLoading(false);
       }
     });
