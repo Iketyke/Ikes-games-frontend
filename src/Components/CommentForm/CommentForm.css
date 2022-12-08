@@ -1,0 +1,33 @@
+.App__Comment_form {
+    display: flex;
+    flex-direction: column;
+}
+.App__Comment_form-box {
+    display: block;
+    border: 1px solid black;
+    background-color: lightgray;
+}
+.App__Comment_form-box textarea {
+    padding: 0.5em;
+    width: 85%;
+    border: none;
+    resize: none;
+    background-color: lightgray;
+   
+}
+.App__Comment_form-box textarea:focus {
+    outline:none;
+   
+}
+.App__Comment_form-box button {
+    background-color: white;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+}
+.App__Comment_form-icon_submit {
+    background-image: var(--icon-submit);
+    width: 30px;
+    height: 30px;
+    background-color: lightgray;
+}
