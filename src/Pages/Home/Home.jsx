@@ -4,16 +4,19 @@ import { ReviewCard, TopReview } from "../../Components";
 import { getReviews } from "../../utils";
 import "./Home.css";
 
-const Home = () => {
+const Home = ({filter}) => {
   const [topReview, setTopReview] = useState({});
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+
   useEffect(() => {
     getReviews().then((data) => {
       if (data) {
-        setTopReview((prevReview) => (prevReview = data[0]));
-        data.shift();
-        setReviews(data);
+        const filtered = data.filter((review) => review.category === filter || filter === null)
+        setTopReview((prevReview) => (prevReview = filtered[0]));
+        filtered.shift();
+        setReviews(filtered);
         setIsLoading(false);
       }
     });

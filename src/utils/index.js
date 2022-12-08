@@ -53,3 +53,13 @@ export const postComment = (review_id, user, commentBody) => {
         console.log(err);
     })
 }
+
+export const getCategories = () => {
+    return gamesAPI
+    .get('/categories')
+    .then(res => {
+        return res.data
+    }).catch(err => {
+        console.log(err);
+    })
+}

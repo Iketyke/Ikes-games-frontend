@@ -1,0 +1,26 @@
+.App__Search {
+    padding-top: 15%;
+}
+
+.App__Search-categories {
+    padding: 0.5em;
+}
+
+.App__Search-categories ul {
+    display: flex;
+    list-style: none;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 1em 0;
+    gap: 0.5em;
+}
+
+.App__Search-category-box {
+   display: flex;
+   background-color: lightgray;
+   border: 1px solid black;
+   border-radius: 20px;
+   padding: 0.5em;
+   text-decoration: none;
+   
+}
