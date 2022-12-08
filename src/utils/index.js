@@ -43,3 +43,13 @@ export const incVote = (review_id, inc) => {
         console.log(err)
     })
 }
+
+export const postComment = (review_id, user, commentBody) => {
+    return gamesAPI
+    .post(`/reviews/${review_id}/comments`, {username: user, body: commentBody})
+    .then(res => {
+        return res.data
+    }).catch(err => {
+        console.log(err);
+    })
+}

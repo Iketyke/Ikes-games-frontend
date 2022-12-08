@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComments, getReview, incVote } from "../../utils";
 import "./Review.css";
-import { Comment } from "../../Components";
+import { Comment, CommentForm } from "../../Components";
+
 const Review = () => {
+  const [formSubmitted, setFormSubmitted] = useState(0);
   const [comments, setComments] = useState([]);
   const [currReview, setCurrReview] = useState({});
   const { review_id } = useParams();
@@ -19,10 +21,10 @@ const Review = () => {
         setIsLoading(false);
       });
     });
-  }, [review_id]);
+  }, [review_id, formSubmitted]);
   const handleVote = (vote) => {
     incVote(review_id, vote).then((data) => {
-      if (voted != vote) {
+      if (voted !== vote) {
         setVoted(vote);
         const updatedReview = { ...currReview };
         updatedReview.votes += vote;
@@ -81,6 +83,7 @@ const Review = () => {
                 ? `Comments - ${comments.length}`
                 : "No Comments - Be the First!"}
             </h3>
+            <CommentForm setFormSubmitted={setFormSubmitted} review_id={review_id}/>
             <ul>
               {comments.map((comment) => (
                 <li key={comment.comment_id}>

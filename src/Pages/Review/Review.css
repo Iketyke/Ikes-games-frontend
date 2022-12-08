@@ -83,7 +83,10 @@
 .App__Review-comments {
     margin:0.5em;
 }
-
+.App__Review-comment_form {
+    display: flex;
+    flex-direction: column;
+}
 .App__Review-comments ul {
     list-style: none;
 }
