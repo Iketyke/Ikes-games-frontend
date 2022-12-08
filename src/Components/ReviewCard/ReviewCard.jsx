@@ -1,7 +1,7 @@
 import React from "react";
 import "./ReviewCard.css";
 
-const ReviewCard = ({ title, category, date, image }) => {
+const ReviewCard = ({ title, category, date, image, votes }) => {
   return (
     <div className="App__Review_card">
       <div className="App__Review_card-image">
@@ -13,6 +13,7 @@ const ReviewCard = ({ title, category, date, image }) => {
           <p>{category}</p>
           <p>{date}</p>
         </div>
+        <p>{votes} likes </p>
       </div>
     </div>
   );

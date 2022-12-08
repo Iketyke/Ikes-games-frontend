@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopReview.css";
 
-const TopReview = ({ title, category, date, image }) => {
+const TopReview = ({ title, category, date, image, votes }) => {
   return (
     <div className="App__Top_review">
       <div className="App__Top_review-content">
@@ -11,6 +11,7 @@ const TopReview = ({ title, category, date, image }) => {
           <p>{category}</p>
           <p>{date}</p>
         </div>
+        <p>{votes} likes</p>
       </div>
     </div>
   );

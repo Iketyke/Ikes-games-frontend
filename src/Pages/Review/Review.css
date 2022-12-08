@@ -38,8 +38,48 @@
 
 .App__Review-by {
     margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
-
+.App__Review-likes {
+    display: flex;
+    align-items: center;
+}
+.App__Review-likes p {
+    font-weight: 600;
+}
+.App__Review-icon_like {
+    background-image: var(--icon-like);
+    
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+.App__Review-icon_liked {
+    background-image: var(--icon-like);
+    filter: invert(29%) sepia(73%) saturate(2186%) hue-rotate(222deg) brightness(106%) contrast(100%);
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+.App__Review-icon_dislike {
+    background-image: var(--icon-dislike);
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    margin-top: 0.5em;
+}
+.App__Review-icon_disliked {
+    background-image: var(--icon-dislike);
+    filter: invert(47%) sepia(84%) saturate(1636%) hue-rotate(333deg) brightness(103%) contrast(101%);
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    margin-top: 0.5em;
+}
 .App__Review-comments {
     margin:0.5em;
 }
@@ -47,3 +87,4 @@
 .App__Review-comments ul {
     list-style: none;
 }
+

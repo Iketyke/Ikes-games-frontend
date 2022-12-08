@@ -34,6 +34,7 @@ const Home = () => {
                 category={topReview.category}
                 date={topReview.created_at}
                 image={topReview.review_img_url}
+                votes={topReview.votes}
               />
             </Link>
           </div>
@@ -46,6 +47,7 @@ const Home = () => {
                     category={review.category}
                     date={review.created_at}
                     image={review.review_img_url}
+                    votes={review.votes}
                   />
                 </Link>
               </li>

@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getComments, getReview } from "../../utils";
+import { getComments, getReview, incVote } from "../../utils";
 import "./Review.css";
 import { Comment } from "../../Components";
 const Review = () => {
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
   const [currReview, setCurrReview] = useState({});
   const { review_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [voted, setVoted] = useState(0);
 
   useEffect(() => {
     getReview(review_id).then((data) => {
       setCurrReview(data.review);
-      getComments(review_id).then(data => {
-        console.log(data)
+      getComments(review_id).then((data) => {
+        console.log(data);
         setComments(data);
         setIsLoading(false);
-      })
-      
+      });
     });
   }, [review_id]);
+  const handleVote = (vote) => {
+    incVote(review_id, vote).then((data) => {
+      if (voted != vote) {
+        setVoted(vote);
+        const updatedReview = { ...currReview };
+        updatedReview.votes += vote;
+        setCurrReview(updatedReview);
+      }
+    });
+  };
   return (
     <>
       {isLoading ? (
@@ -41,14 +51,48 @@ const Review = () => {
             </div>
             <p>{currReview.review_body}</p>
             <p className="App__Review-by">Review by {currReview.owner}</p>
+            <div className="App__Review-likes">
+              <p>{currReview.votes} likes</p>
+              <div
+                onClick={() => {
+                  handleVote(1);
+                }}
+                className={
+                  voted === 1
+                    ? "App__Review-icon_liked"
+                    : "App__Review-icon_like"
+                }
+              />
+              <div
+                onClick={() => {
+                  handleVote(-1);
+                }}
+                className={
+                  voted === -1
+                    ? "App__Review-icon_disliked"
+                    : "App__Review-icon_dislike"
+                }
+              />
+            </div>
           </div>
           <div className="App__Review-comments">
-            <h3>{comments.length ? (`Comments - ${comments.length}`) : ("No Comments - Be the First!")}</h3>
-            <ul>{comments.map(comment => (
-              <li key={comment.comment_id}>
-                <Comment author={comment.author} created_at={comment.created_at} body={comment.body} votes={comment.votes} />
-              </li>
-            ))}</ul>
+            <h3>
+              {comments.length
+                ? `Comments - ${comments.length}`
+                : "No Comments - Be the First!"}
+            </h3>
+            <ul>
+              {comments.map((comment) => (
+                <li key={comment.comment_id}>
+                  <Comment
+                    author={comment.author}
+                    created_at={comment.created_at}
+                    body={comment.body}
+                    votes={comment.votes}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}

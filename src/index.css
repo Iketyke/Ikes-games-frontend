@@ -7,4 +7,6 @@
     --icon-info: url('./Assets/Info.svg');
     --icon-search: url('./Assets/Search.svg');
     --icon-back: url('./Assets/Back.svg');
+    --icon-like: url('./Assets/Like.svg');
+    --icon-dislike: url('./Assets/Dislike.svg');
 }

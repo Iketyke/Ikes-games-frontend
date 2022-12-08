@@ -34,3 +34,12 @@ export const getComments = (review_id) => {
         })
 }
 
+export const incVote = (review_id, inc) => {
+    return gamesAPI
+    .patch(`/reviews/${review_id}`, {inc_votes: inc})
+    .then(res => {
+        return res.data
+    }).catch(err => {
+        console.log(err)
+    })
+}
