@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ReviewCard, TopReview } from "../../Components";
 import { getReviews } from "../../utils";
 import "./Home.css";
 
-const Home = ({ filter, setFilter }) => {
+const Home = ({ filter, setFilter, sort, setSort, order, setOrder, searchParams}) => {
   const [topReview, setTopReview] = useState({});
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
+  
 
   useEffect(() => {
     setIsLoading(true)
-    if (location.search.startsWith("?category=")) {
-      setFilter(location.search.slice(10));
-      getReviews(location.search.slice(10)).then((data) => {
+    if (searchParams.category || searchParams.sort_by || searchParams.order) {
+      setFilter(searchParams.category);
+      setSort(searchParams.sort_by)
+      setOrder(searchParams.order)
+      getReviews(searchParams.category, searchParams.sort_by, searchParams.order).then((data) => {
         if (data) {
           setTopReview((prevReview) => (prevReview = data[0]));
           data.shift();
@@ -23,7 +25,7 @@ const Home = ({ filter, setFilter }) => {
         }
       });
     } else {
-      getReviews(filter).then((data) => {
+      getReviews(filter, sort, order).then((data) => {
       if (data) {
         setTopReview((prevReview) => (prevReview = data[0]));
         data.shift();
@@ -33,7 +35,7 @@ const Home = ({ filter, setFilter }) => {
     });
     }
     
-  }, [filter, location.search, setFilter]);
+  }, [filter, setFilter, order, sort]);
 
   return (
     <>
