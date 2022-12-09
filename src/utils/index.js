@@ -4,10 +4,13 @@ const gamesAPI = axios.create({
     baseURL: "https://ikes-games.cyclic.app/api"
 });
 
-export const getReviews = (category) => {
-    let path = '/reviews'
+export const getReviews = (category, sort_by) => {
+    let path = '/reviews?'
     if (category) {
-        path+= `?category=${category}` 
+        path+= `category=${category}&` 
+    }
+    if (sort_by) {
+        path += `sort_by=${sort_by}`
     }
     return gamesAPI
         .get(path)

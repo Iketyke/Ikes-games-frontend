@@ -18,7 +18,7 @@ const Header = ({ filter }) => {
             </div>
           ) : (
             <div className="App__Header-home">
-              <div className="App__Header-icon_info" />
+              <div className="App__Header-icon_sort" />
               <h1>Ike's Games</h1>
               <Link to="/Search">
                 <div className="App__Header-icon_search" />

@@ -7,12 +7,12 @@ const Search = ({filter, setFilter}) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    setIsLoading(true);
     getCategories().then((data) => {
-      console.log(data)
       setCategories(data);
       setIsLoading(false);
     });
-  }, [filter]);
+  }, []);
   const handleClick = (category) => {
     setFilter(category);
   }
@@ -32,7 +32,7 @@ const Search = ({filter, setFilter}) => {
             <ul>
               {categories.map(category => (
                 <li  key={category.slug} >
-                  <Link to="/" style={{textDecoration: "none"}}><div className="App__Search-category-box"><p onClick={() => handleClick(category.slug)}>{category.slug}</p>{filter === category.slug ? (<p onClick={removeFilter}>✖️</p>) : null}</div></Link>
+                  <div className="App__Search-category-box"><Link to={`/?category=${category.slug}`} style={{textDecoration: "none"}}><p onClick={() => handleClick(category.slug)}>{category.slug}</p></Link>{filter === category.slug ? (<p onClick={removeFilter}>✖️</p>) : null}</div>
                 </li>
               ))}
             </ul>

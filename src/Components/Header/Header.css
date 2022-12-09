@@ -36,7 +36,7 @@
     margin: 0.25em 0; 
 }
 
-.App__Header-icon_info {
+.App__Header-icon_sort {
     background-image: var(--icon-info);
     width:30px;
     height: 30px;
