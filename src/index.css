@@ -2,6 +2,9 @@
     padding: 0;
     margin: 0;
 }
+.Link {
+    text-decoration: none;
+}
 
 :root {
     --icon-info: url('./Assets/Info.svg');
@@ -10,4 +13,5 @@
     --icon-like: url('./Assets/Like.svg');
     --icon-dislike: url('./Assets/Dislike.svg');
     --icon-submit: url('./Assets/Submit.svg');
+    --icon-sort: url('./Assets/Sort.svg');
 }

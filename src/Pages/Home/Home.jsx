@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReviewCard, TopReview } from "../../Components";
 import { getReviews } from "../../utils";
 import "./Home.css";
 
-const Home = () => {
+const Home = ({ filter, setFilter }) => {
   const [topReview, setTopReview] = useState({});
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+
   useEffect(() => {
-    getReviews().then((data) => {
+    setIsLoading(true)
+    if (location.search.startsWith("?category=")) {
+      setFilter(location.search.slice(10));
+      getReviews(location.search.slice(10)).then((data) => {
+        if (data) {
+          setTopReview((prevReview) => (prevReview = data[0]));
+          data.shift();
+          setReviews(data);
+          setIsLoading(false);
+        }
+      });
+    } else {
+      getReviews(filter).then((data) => {
       if (data) {
         setTopReview((prevReview) => (prevReview = data[0]));
         data.shift();
@@ -17,7 +31,9 @@ const Home = () => {
         setIsLoading(false);
       }
     });
-  }, []);
+    }
+    
+  }, [filter, location.search, setFilter]);
 
   return (
     <>

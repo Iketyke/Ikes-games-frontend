@@ -4,9 +4,16 @@ const gamesAPI = axios.create({
     baseURL: "https://ikes-games.cyclic.app/api"
 });
 
-export const getReviews = () => {
+export const getReviews = (category, sort_by) => {
+    let path = '/reviews?'
+    if (category) {
+        path+= `category=${category}&` 
+    }
+    if (sort_by) {
+        path += `sort_by=${sort_by}`
+    }
     return gamesAPI
-        .get('/reviews')
+        .get(path)
         .then(res => {
             return res.data;
         }).catch(err => {
@@ -47,6 +54,16 @@ export const incVote = (review_id, inc) => {
 export const postComment = (review_id, user, commentBody) => {
     return gamesAPI
     .post(`/reviews/${review_id}/comments`, {username: user, body: commentBody})
+    .then(res => {
+        return res.data
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+export const getCategories = () => {
+    return gamesAPI
+    .get('/categories')
     .then(res => {
         return res.data
     }).catch(err => {

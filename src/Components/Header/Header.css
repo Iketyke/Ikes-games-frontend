@@ -23,8 +23,20 @@
     
     
 }
+.App__Header-filtered {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(52, 96, 240, 0.753);
+    backdrop-filter: blur(10px);
+}
+.App__Header-filtered h1{ 
+    text-transform: capitalize;
+    margin: 0.25em 0; 
+}
 
-.App__Header-icon_info {
+.App__Header-icon_sort {
     background-image: var(--icon-info);
     width:30px;
     height: 30px;
