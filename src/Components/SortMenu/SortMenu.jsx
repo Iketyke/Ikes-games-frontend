@@ -4,15 +4,15 @@ import "./SortMenu.css"
 
 const SortMenu = ({setSort, setOrder, searchParams, setSearchParams}) => {
     const handleSort = (sort) => {
-        console.log(searchParams)
+        
         setSort(sort)
         const newSearchParams = {...searchParams}
-        console.log(newSearchParams)
+        
         newSearchParams.sort_by = sort
         setSearchParams(newSearchParams)
     }
     const handleOrder = (order) => {
-        console.log(searchParams)
+        
         setOrder(order);
         const newSearchParams = {...searchParams}
         newSearchParams.order = order

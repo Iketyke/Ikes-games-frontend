@@ -16,7 +16,7 @@ const Review = () => {
     getReview(review_id).then((data) => {
       setCurrReview(data.review);
       getComments(review_id).then((data) => {
-        console.log(data);
+        
         setComments(data);
         setIsLoading(false);
       });
@@ -88,6 +88,8 @@ const Review = () => {
               {comments.map((comment) => (
                 <li key={comment.comment_id}>
                   <Comment
+                    setFormSubmitted={setFormSubmitted}
+                    comment_id={comment.comment_id}
                     author={comment.author}
                     created_at={comment.created_at}
                     body={comment.body}
