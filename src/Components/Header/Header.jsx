@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Header.css";
 import { Link } from "react-router-dom";
-const Header = ({ filter }) => {
+import SortMenu from "../SortMenu/SortMenu";
+
+const Header = ({ filter, setSort, setOrder, setSearchParams, searchParams}) => {
+  const [showSort, setShowSort] = useState(false);
+  const showSortMenu = () => {
+    setShowSort(!showSort);
+  };
+
   const location = useLocation();
   return (
     <>
@@ -14,11 +21,13 @@ const Header = ({ filter }) => {
                 <div className="App__Header-icon_back" />
               </Link>
               <h1>{filter}</h1>
-              <div></div>
+              <div onClick={showSortMenu} className="App__Header-icon_sort" />
+              {showSort ? <SortMenu setSort={setSort} setOrder={setOrder} setSearchParams={setSearchParams} searchParams={searchParams}/> : null}
             </div>
           ) : (
             <div className="App__Header-home">
-              <div className="App__Header-icon_sort" />
+              <div onClick={showSortMenu} className="App__Header-icon_sort" />
+              {showSort ? <SortMenu setSort={setSort} setOrder={setOrder} setSearchParams={setSearchParams} searchParams={searchParams}/> : null}
               <h1>Ike's Games</h1>
               <Link to="/Search">
                 <div className="App__Header-icon_search" />
