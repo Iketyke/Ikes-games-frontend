@@ -8,7 +8,6 @@ const CommentForm = ({ review_id, setFormSubmitted }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     postComment(review_id, "Anonymous", commentBody).then((data) => {
-      console.log(data);
     });
     setFormSubmitted((prev) => prev + 1)
     setCommentBody("");
